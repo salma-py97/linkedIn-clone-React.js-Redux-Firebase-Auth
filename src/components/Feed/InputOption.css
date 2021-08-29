@@ -1,0 +1,16 @@
+.inputOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: gray;
+  padding: 10px;
+}
+.inputOption > h4 {
+  margin-left: 5px;
+}
+@media (max-width: 600px) {
+  .inputOption > h4 {
+    font-size: 15px;
+    font-weight: 500;
+  }
+}

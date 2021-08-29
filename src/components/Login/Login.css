@@ -1,0 +1,51 @@
+.login {
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  padding-bottom: 100px;
+}
+.login > img {
+  object-fit: contain;
+  height: 70px;
+  margin-bottom: 30px;
+}
+
+.login > form {
+  display: flex;
+  flex-direction: column;
+}
+.login > form > input{
+  width: 350px;
+  height: 50px;
+  font-size: 17px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+}
+.login > form > input:focus{
+  outline-color: darkgray;
+}
+
+.login > form > button {
+  width: 350px;
+  height: 50px;
+  font-size: large;
+  color: white;
+  background-color: #0074B1;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.login > p > span {
+  color: #0074B1;
+  font-weight: 500;
+  cursor: pointer;
+}
+.login > p > span:hover {
+  text-decoration: underline;
+}

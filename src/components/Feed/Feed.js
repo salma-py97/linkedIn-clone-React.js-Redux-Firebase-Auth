@@ -13,10 +13,23 @@ import {db} from '../../firebase'
 // to use timestamp import firebase
 import firebase from 'firebase'
 
+// pull from store
+import {selectUser} from '../../features/userSlice'
+import {useSelector} from 'react-redux'
+
+// react-flip-move
+import FlipMove from 'react-flip-move'
+
+
 const Feed = () => {
   // State
   const [posts, setPosts] = useState([])
   const [input, setInput] = useState("")
+  
+  // init user
+  const user = useSelector(selectUser)
+  // deconstruct user
+  const {displayName, email, photoURL} = user
 
   // Function
   const sendPost = (e) => {
@@ -24,10 +37,10 @@ const Feed = () => {
 
     // Add post to firebase
     db.collection('posts').add({
-      name: "Salma",
+      name: displayName,
       message: input,
-      description: "Aspiring web developer",
-      photoURL: "https://i.ibb.co/7S0Vqgz/Female-Developer.jpg",
+      description: email,
+      photoURL: photoURL || "",
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     })
 
@@ -70,10 +83,11 @@ const Feed = () => {
 
 
       {/* Posts */}
-
-      {posts?.map(({id, data : {name, message, description, photoURL, timestamp}}) => (
-        <Post key={id} name={name} message={message} description={description} photoURL={photoURL} timestamp={timestamp}  />
-      ))}
+      <FlipMove>
+        {posts?.map(({id, data : {name, message, description, photoURL, timestamp}}) => (
+          <Post key={id} name={name} message={message} description={description} photoURL={photoURL} timestamp={timestamp}  />
+        ))}
+      </FlipMove>
 
 
 

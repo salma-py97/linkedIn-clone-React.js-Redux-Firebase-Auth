@@ -7,14 +7,35 @@ import BusinessCenterRoundedIcon from '@material-ui/icons/BusinessCenterRounded'
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 
+// Log out
+import {useDispatch} from 'react-redux'
+import {logout} from '../../features/userSlice'
+import {auth} from '../../firebase'
+
+// pull from store
+import {selectUser} from '../../features/userSlice'
+import {useSelector} from 'react-redux'
+
 const Header = () => {
+  // init dispatch
+  const dispatch = useDispatch()
+  
+  // init user
+  const user = useSelector(selectUser)
+
+  const logOutOfApp = () => {
+    dispatch(logout())
+
+    auth.signOut()
+  }
+
   return (
     <div className="header">
       <div className="header__left">
         <img src="/linkedin.png" alt="" />
         <div className="header__search">
           <SearchIcon />
-          <input type="text" />
+          <input type="text" placeholder="Search..." />
         </div>
 
       </div>
@@ -24,7 +45,7 @@ const Header = () => {
         <HeaderOption Icon={BusinessCenterRoundedIcon} text="Jobs" />
         <HeaderOption Icon={ChatIcon} text="Messaging" />
         <HeaderOption Icon={NotificationsNoneIcon} text="Notifications" />
-        <HeaderOption avatar="https://i.ibb.co/7S0Vqgz/Female-Developer.jpg" text="Name" />
+        <HeaderOption onClick={logOutOfApp} text={user ? 'me/Logout' : 'Login'} />
       </div>
       
     </div>

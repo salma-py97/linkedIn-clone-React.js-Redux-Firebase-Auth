@@ -7,11 +7,14 @@ import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 
-const Post = ({ name, description, message, photoURL, timestamp}) => {
+// react-flip-move
+import {forwardRef} from 'react'
+
+const Post = forwardRef(({ name, description, message, photoURL, timestamp}, ref) => {
   return (
-    <div className="post">
+    <div className="post" ref={ref}>
       <div className="post__header">
-        <Avatar src={photoURL} />
+        <Avatar src={photoURL}>{name[0]}</Avatar>
         <div className="post_info">
           <div>
             <h2>{name}</h2>
@@ -36,6 +39,6 @@ const Post = ({ name, description, message, photoURL, timestamp}) => {
 
     </div>
   )
-}
+})
 
 export default Post

@@ -38,6 +38,11 @@ const Login = () => {
           }))
         })
       }).catch(error => alert(error.message))
+
+      setEmail('')
+      setName('')
+      setProfilePic('')
+      setPassword('')
   }
 
 
@@ -56,6 +61,12 @@ const Login = () => {
           }
         ))
       }).catch(error => alert(error.message))
+
+
+    setEmail('')
+    setName('')
+    setProfilePic('')
+    setPassword('')
   }
 
   return (
